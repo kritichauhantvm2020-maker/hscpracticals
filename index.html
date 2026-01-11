@@ -68,7 +68,7 @@
             console.log(seat);
         	alert(parseInt(seat,10));
             const studentExams = examData.filter(row =>
-              row['B']?.trim().toLowerCase() === seat && row['C']?.trim().toLowerCase() === stream
+              row['B']?.trim().toLowerCase() === seat.trim().toLowerCase() && row['C']?.trim().toLowerCase() === stream
             );
 			const studentSchedule = examSchedule.filter(r =>
 				r['B']?.trim().toLowerCase() === stream 
@@ -103,6 +103,7 @@
     </script>
 </body>
 </html>
+
 
 
 

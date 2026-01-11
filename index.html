@@ -95,7 +95,7 @@
                 row.innerHTML = `
 					<td>${exam.BATCH}</td>
                     <td>${exam.SUBJECT}</td>
-                    <td>${exam.DATE}</td>
+                    <td>${exam.DATE.toDate()}</td>
                     <td>${exam.DAY}</td>
                     <td>${exam.TIME}</td>
                     <td>${exam.VENUE}</td>
@@ -110,6 +110,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -29,7 +29,7 @@
                     <th>Batch Code</th>
                     <th>Subject</th>
                     <th>Date</th>
-		    <th> Day</th>
+		    		<th> Day</th>
                     <th>Time</th>
                     <th>ROOM/LAB</th>
                 </tr></thead>
@@ -86,8 +86,6 @@
 			const studentSchedule = examSchedule.filter(r =>{
 				const startSeat = parseInt(r['FROM'].substring(1),10);
 				const endSeat =parseInt(r['TO'].substring(1),10);
-				console.log(startSeat,'Start Date');
-				console.log(endSeat,'End date');
 				return (r['STREAM']?.trim().toLowerCase() === stream && seatNo >= startSeat && seatNo <= seatNo);
 			});
 			console.log(studentExams,'Student table');
@@ -98,7 +96,7 @@
             }
 
             const studentName = studentExams[0]['Student Name'];
-            //const batch = studentExams[0]['D'];
+          
             document.getElementById('studentInfo').textContent = `Student: ${studentName.toUpperCase()} (Stream: ${stream.toUpperCase()})`;
 
             const tbody = document.querySelector('#examTable tbody');
@@ -123,6 +121,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -92,7 +92,7 @@
             tbody.innerHTML = '';
             studentSchedule.forEach(exam => {
 				 if (exam.Date && !isNaN(exam.Date)) {
-        			exam.Date = sheetsSerialToDate(parseFloat(row.Date)).toLocaleDateString('en-IN');
+        			exam.Date = sheetsSerialToDate(parseFloat(exam.Date)).toLocaleDateString('en-IN');
     		}
                 const row = tbody.insertRow();
                 row.innerHTML = `
@@ -123,6 +123,7 @@
     </script>
 </body>
 </html>
+
 
 
 

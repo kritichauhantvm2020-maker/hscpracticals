@@ -31,7 +31,7 @@
                     <th>Date</th>
 		    <th> Day</th>
                     <th>Time</th>
-                    <th>ROOM/LABnue</th>
+                    <th>ROOM/LAB</th>
                 </tr></thead>
             <tbody></tbody>
         </table>
@@ -84,20 +84,20 @@
             }
 
             const studentName = studentExams[0]['D'];
-			const studentName = studentExams[0]['D'];
             //const batch = studentExams[0]['D'];
-            document.getElementById('studentInfo').textContent = `Student: ${studentName} (Stream: ${stream}.toUpperCase())`;
+            document.getElementById('studentInfo').textContent = `Student: ${studentName.toUpperCase()} (Stream: ${stream.toUpperCase()})`;
 
             const tbody = document.querySelector('#examTable tbody');
             tbody.innerHTML = '';
-            studentExams.forEach(exam => {
+            studentSchedule.forEach(exam => {
                 const row = tbody.insertRow();
                 row.innerHTML = `
+					<td>${exam.G}</td>
+                    <td>${exam.C}</td>
                     <td>${exam.D}</td>
                     <td>${exam.E}</td>
                     <td>${exam.F}</td>
-                    <td>${exam.G}</td>
-                    <td>${exam.H}</td>
+                    <td>${exam.J}</td>
                 `;
             });
 
@@ -109,6 +109,7 @@
     </script>
 </body>
 </html>
+
 
 
 

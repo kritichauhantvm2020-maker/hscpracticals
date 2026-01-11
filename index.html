@@ -51,8 +51,9 @@
                 const sheet1 = workbook.Sheets[workbook.SheetNames[0]];
 				 const sheet2 = workbook.Sheets[workbook.SheetNames[1]];
                 examData = XLSX.utils.sheet_to_json(sheet1);
-				  examSchedule = XLSX.utils.sheet_to_json(sheet2);
+				examSchedule = XLSX.utils.sheet_to_json(sheet2);
                 console.log('Excel loaded:', examData.length, 'records');
+				console.log('Excel loaded:', examSchedule.length, 'schedule');
             } catch (error) {
                 alert('Error loading Excel file. Check URL.');
             }
@@ -100,6 +101,7 @@
     </script>
 </body>
 </html>
+
 
 
 

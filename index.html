@@ -43,31 +43,20 @@
         // Load Excel on page load
         async function loadExcel() {
             try {
-                
-       
-        		const url = 'https://docs.google.com/spreadsheets/d/1YY2NOIeoC2kVMGLODfNzAXBgjKIWkqKS/export?format=xlsx';
-
-        const response = await fetch(url);
-        const data = await response.arrayBuffer();
-
-        const workbook = XLSX.read(data, { type: 'array' });
-
-        console.log('Sheets:', workbook.SheetNames);
-
-        const sheet1 = workbook.Sheets[workbook.SheetNames[0]];
-        const sheet2 = workbook.Sheets[workbook.SheetNames[1]];
-
-        examData = XLSX.utils.sheet_to_json(sheet1, { defval: '' });
-        examSchedule = sheet2
-            ? XLSX.utils.sheet_to_json(sheet2, { defval: '' })
-            : [];
-
-        console.log('Excel loaded:', examData.length, 'records');
-        console.log('Excel loaded:', examSchedule.length, 'schedule');
-
-    } catch (error) {
-        console.error(error);
-        alert('Error loading Excel file. Check URL or sharing permissions.');
+        			const url = 'https://docs.google.com/spreadsheets/d/1YY2NOIeoC2kVMGLODfNzAXBgjKIWkqKS/export?format=xlsx';
+			        const response = await fetch(url);
+        			const data = await response.arrayBuffer();
+        			const workbook = XLSX.read(data, { type: 'array' });
+      		  		console.log('Sheets:', workbook.SheetNames);
+        			const sheet1 = workbook.Sheets[workbook.SheetNames[0]];
+        			const sheet2 = workbook.Sheets[workbook.SheetNames[1]];
+        			examData = XLSX.utils.sheet_to_json(sheet1, { defval: '' });
+        			examSchedule = sheet2? XLSX.utils.sheet_to_json(sheet2, { defval: '' }): [];
+        			console.log('Excel loaded:', examData.length, 'records');
+        			console.log('Excel loaded:', examSchedule.length, 'schedule');
+    		} catch (error) {
+        			console.error(error);
+        			alert('Error loading Excel file. Check URL or sharing permissions.');
     }
  }
 
@@ -121,6 +110,7 @@
     </script>
 </body>
 </html>
+
 
 
 

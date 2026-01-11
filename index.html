@@ -84,13 +84,13 @@
               row['Seat No.']?.trim().toLowerCase() === seat.trim().toLowerCase() && row['Stream Name']?.trim().toLowerCase() === stream
             );
 			const studentSchedule = examSchedule.filter(r =>{
-				const startSeat = r['FROM'];
-				const endSeat = r['TO'];
+				const startSeat = parseInt(r['FROM'].substring(1),10);
+				const endSeat =parseInt(r['TO'].substring(1),10);
 					console.log(startSeat,'Start Date');
 					console.log(endSeat,'End date');
-				return (r['B']?.trim().toLowerCase() === stream && startSeat >= seatNo && endSeat <= seatNo);
+				return (r['STREAM']?.trim().toLowerCase() === stream && startSeat >= seatNo && endSeat <= seatNo);
 			});
-            if (studentExams.length === 0 && studentSchedule.lenght == 0 ) {
+            if (studentExams.length === 0 && studentSchedule.lenght === 0 ) {
                 alert('No data found for this seat number and stream.');
                 return;
             }
@@ -104,12 +104,12 @@
             studentSchedule.forEach(exam => {
                 const row = tbody.insertRow();
                 row.innerHTML = `
-					<td>${exam.G}</td>
-                    <td>${exam.C}</td>
-                    <td>${exam.D}</td>
-                    <td>${exam.E}</td>
-                    <td>${exam.F}</td>
-                    <td>${exam.J}</td>
+					<td>${exam.BATCH}</td>
+                    <td>${exam.SUBJECT}</td>
+                    <td>${exam.DATE}</td>
+                    <td>${exam.DAY}</td>
+                    <td>${exam.TIME}</td>
+                    <td>${exam.VENUE}</td>
                 `;
             });
 
@@ -121,6 +121,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -91,11 +91,14 @@
             const tbody = document.querySelector('#examTable tbody');
             tbody.innerHTML = '';
             studentSchedule.forEach(exam => {
+				 if (exam.Date && !isNaN(exam.Date)) {
+        			row.Date = sheetsSerialToDate(parseFloat(row.Date)).toLocaleDateString('en-IN');
+    		}
                 const row = tbody.insertRow();
                 row.innerHTML = `
 					<td>${exam.BATCH}</td>
                     <td>${exam.SUBJECT}</td>
-                    <td>${exam.DATE.toDate()}</td>
+                    <td>${exam.DATE}</td>
                     <td>${exam.DAY}</td>
                     <td>${exam.TIME}</td>
                     <td>${exam.VENUE}</td>
@@ -105,11 +108,22 @@
             document.getElementById('result').classList.remove('hidden');
         });
 
+		// Add this helper function
+		function sheetsSerialToDate(serial) {
+    		const utc_days = Math.floor(serial - 25569);
+    		const utc_value = utc_days * 86400;
+    		const date_info = new Date(utc_value * 1000);
+   			const fractional_day = serial - Math.floor(serial) + 0.0000001;
+    		let total_seconds = Math.floor(date_info.getTime() / 1000);
+    		total_seconds += fractional_day * 86400;
+    		return new Date(total_seconds * 1000);
+		}
         // Load data on page load
         window.onload = loadExcel;
     </script>
 </body>
 </html>
+
 
 
 

@@ -88,10 +88,10 @@
 				const endSeat =parseInt(r['TO'].substring(1),10);
 				console.log(startSeat,'Start Date');
 				console.log(endSeat,'End date');
-				return (r['STREAM']?.trim().toLowerCase() === stream && startSeat >= seatNo && endSeat <= seatNo);
+				return (r['STREAM']?.trim().toLowerCase() === stream && seatNo >= startSeat && seatNo <= seatNo);
 			});
-
-			console.log(studentSchedule,'Start Date');
+			console.log(studentExams,'Student table');
+			console.log(studentSchedule,'Schedule table');
             if (studentExams.length === 0 && studentSchedule.lenght === 0 ) {
                 alert('No data found for this seat number and stream.');
                 return;
@@ -123,6 +123,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical Exam Lookup</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        input, select, button { padding: 10px; margin: 5px; font-size: 16px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Practical Exam Schedule Lookup</h1>
+    <form id="searchForm">
+        <input type="text" id="seatNumber" placeholder="Enter Seat Number" required>
+        <input type="text" id="stream" placeholder="Commerce/Science" required>
+        <button type="submit">Search</button>
+    </form>
+    <div id="result" class="hidden">
+        <h2 id="studentInfo"></h2>
+        <table id="examTable">
+            <thead>
+                <tr>
+                    <th>Batch Code</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+		    <th> Day</th>
+                    <th>Time</th>
+                    <th>ROOM/LABnue</th>
+                </tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        let examData = []; // Global data cache
+
+        // Load Excel on page load
+        async function loadExcel() {
+            try {
+                
+                const url = 'https://docs.google.com/spreadsheets/d/15mxxba0ONjV746AHE0e3eMmb-_MiPtIy/edit?usp=drive_link&ouid=107869306236088384367&rtpof=true&sd=true'; // e.g., 'https://example.com/student_exams.xlsx'
+                const response = await fetch(url);
+                const data = await response.arrayBuffer();
+                const workbook = XLSX.read(data, { type: 'array' });
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                examData = XLSX.utils.sheet_to_json(sheet);
+                console.log('Excel loaded:', examData.length, 'records');
+            } catch (error) {
+                alert('Error loading Excel file. Check URL.');
+            }
+        }
+
+        // Search on form submit
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+          
+            const seat = document.getElementById('seatNumber').value.trim().toLowerCase();
+            const stream = document.getElementById('stream').value.trim().toLowerCase();
+            console.log(seat);
+        
+            const studentExams = examData.filter(row =>
+              row['A']?.trim().toLowerCase() === seat && row['B']?.trim().toLowerCase() === stream
+            );
+
+            if (studentExams.length === 0) {
+                alert('No data found for this seat number and stream.');
+                return;
+            }
+
+            const studentName = studentExams[0]['C'];
+            //const batch = studentExams[0]['D'];
+            document.getElementById('studentInfo').textContent = `Student: ${studentName} (Stream: ${stream})`;
+
+            const tbody = document.querySelector('#examTable tbody');
+            tbody.innerHTML = '';
+            studentExams.forEach(exam => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${exam.D}</td>
+                    <td>${exam.E}</td>
+                    <td>${exam.F}</td>
+                    <td>${exam.G}</td>
+                    <td>${exam.H}</td>
+                `;
+            });
+
+            document.getElementById('result').classList.remove('hidden');
+        });
+
+        // Load data on page load
+        window.onload = loadExcel;
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

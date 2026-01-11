@@ -70,7 +70,7 @@
             const studentExams = examData.filter(row =>
               row['B']?.trim().toLowerCase() === seat && row['C']?.trim().toLowerCase() === stream
             );
-			const studentSchedule = examSchedule.(r =>
+			const studentSchedule = examSchedule.filter(r =>
 				r['B']?.trim().toLowerCase() === stream 
 			);
             if (studentExams.length === 0) {
@@ -103,6 +103,7 @@
     </script>
 </body>
 </html>
+
 
 
 

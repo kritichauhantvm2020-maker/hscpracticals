@@ -72,8 +72,8 @@
               row['B']?.trim().toLowerCase() === seat.trim().toLowerCase() && row['C']?.trim().toLowerCase() === stream
             );
 			const studentSchedule = examSchedule.filter(r =>{
-				const startSeat = parseInt(r['H'].substring(1));
-				const endSeat = parseInt(r['I'].substring(1));
+				const startSeat = parseInt(r['H'].slice(1),10);
+				const endSeat = parseInt(r['I'].slice(1),10);
 					 console.log(startSeat,'Start Date');
 					console.log(endSeat,'End date');
 				return (r['B']?.trim().toLowerCase() === stream && startSeat >= seatNo && endSeat <= seatNo);
@@ -109,6 +109,7 @@
     </script>
 </body>
 </html>
+
 
 
 

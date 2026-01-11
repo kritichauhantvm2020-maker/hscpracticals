@@ -65,8 +65,9 @@
           
             const seat = document.getElementById('seatNumber').value;
             const stream = document.getElementById('stream').value.trim().toLowerCase();
+			const seatNo = parseInt(seat.substring(1));
             console.log(seat.substring(1));
-        	alert(parseInt(seat,10));
+        	alert(parseInt(seatNo);
             const studentExams = examData.filter(row =>
               row['B']?.trim().toLowerCase() === seat.trim().toLowerCase() && row['C']?.trim().toLowerCase() === stream
             );
@@ -78,7 +79,7 @@
                 return;
             }
 
-            const studentName = studentExams[0]['C'];
+            const studentName = studentExams[0]['D'];
             //const batch = studentExams[0]['D'];
             document.getElementById('studentInfo').textContent = `Student: ${studentName} (Stream: ${stream}.toUpperCase())`;
 
@@ -103,6 +104,7 @@
     </script>
 </body>
 </html>
+
 
 
 

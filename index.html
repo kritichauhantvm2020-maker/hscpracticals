@@ -39,17 +39,19 @@
 
     <script>
         let examData = []; // Global data cache
-
+		let examSchedule = [];
         // Load Excel on page load
         async function loadExcel() {
             try {
                 
-                const url = 'https://docs.google.com/spreadsheets/d/15mxxba0ONjV746AHE0e3eMmb-_MiPtIy/edit?usp=drive_link&ouid=107869306236088384367&rtpof=true&sd=true'; // e.g., 'https://example.com/student_exams.xlsx'
+                const url = 'https://docs.google.com/spreadsheets/d/1YY2NOIeoC2kVMGLODfNzAXBgjKIWkqKS/edit?usp=drive_link&ouid=107869306236088384367&rtpof=true&sd=true'; // e.g., 'https://example.com/student_exams.xlsx'
                 const response = await fetch(url);
                 const data = await response.arrayBuffer();
                 const workbook = XLSX.read(data, { type: 'array' });
-                const sheet = workbook.Sheets[workbook.SheetNames[0]];
-                examData = XLSX.utils.sheet_to_json(sheet);
+                const sheet1 = workbook.Sheets[workbook.SheetNames[0]];
+				 const sheet2 = workbook.Sheets[workbook.SheetNames[1]];
+                examData = XLSX.utils.sheet_to_json(sheet1);
+				  examSchedule = XLSX.utils.sheet_to_json(sheet2);
                 console.log('Excel loaded:', examData.length, 'records');
             } catch (error) {
                 alert('Error loading Excel file. Check URL.');
@@ -98,6 +100,7 @@
     </script>
 </body>
 </html>
+
 
 
 

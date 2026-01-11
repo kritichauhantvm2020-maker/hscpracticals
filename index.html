@@ -44,20 +44,32 @@
         async function loadExcel() {
             try {
                 
-                const url = 'https://docs.google.com/spreadsheets/d/1YY2NOIeoC2kVMGLODfNzAXBgjKIWkqKS/edit?usp=drive_link&ouid=107869306236088384367&rtpof=true&sd=true'; // e.g., 'https://example.com/student_exams.xlsx'
-                const response = await fetch(url);
-                const data = await response.arrayBuffer();
-                const workbook = XLSX.read(data, { type: 'array' });
-                const sheet1 = workbook.Sheets[workbook.SheetNames[0]];
-				 const sheet2 = workbook.Sheets[workbook.SheetNames[1]];
-                examData = XLSX.utils.sheet_to_json(sheet1);
-				examSchedule = XLSX.utils.sheet_to_json(sheet2);
-                console.log('Excel loaded:', examData.length, 'records');
-				console.log('Excel loaded:', examSchedule.length, 'schedule');
-            } catch (error) {
-                alert('Error loading Excel file. Check URL.');
-            }
-        }
+       
+        		const url = 'https://docs.google.com/spreadsheets/d/1YY2NOIeoC2kVMGLODfNzAXBgjKIWkqKS/export?format=xlsx';
+
+        const response = await fetch(url);
+        const data = await response.arrayBuffer();
+
+        const workbook = XLSX.read(data, { type: 'array' });
+
+        console.log('Sheets:', workbook.SheetNames);
+
+        const sheet1 = workbook.Sheets[workbook.SheetNames[0]];
+        const sheet2 = workbook.Sheets[workbook.SheetNames[1]];
+
+        examData = XLSX.utils.sheet_to_json(sheet1, { defval: '' });
+        examSchedule = sheet2
+            ? XLSX.utils.sheet_to_json(sheet2, { defval: '' })
+            : [];
+
+        console.log('Excel loaded:', examData.length, 'records');
+        console.log('Excel loaded:', examSchedule.length, 'schedule');
+
+    } catch (error) {
+        console.error(error);
+        alert('Error loading Excel file. Check URL or sharing permissions.');
+    }
+ }
 
         // Search on form submit
         document.getElementById('searchForm').addEventListener('submit', function(e) {
@@ -109,6 +121,7 @@
     </script>
 </body>
 </html>
+
 
 
 

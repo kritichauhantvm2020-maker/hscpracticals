@@ -63,7 +63,7 @@
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
           
-            const seat = document.getElementById('seatNumber').value.trim().toLowerCase();
+            const seat = document.getElementById('seatNumber').value;
             const stream = document.getElementById('stream').value.trim().toLowerCase();
             console.log(seat);
         	alert(parseInt(seat));
@@ -103,6 +103,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -79,17 +79,19 @@
             const stream = document.getElementById('stream').value.trim().toLowerCase();
 			const seatNo = parseInt(seat.substring(1));
             console.log(seat.substring(1));
-        	alert(seatNo);
-            const studentExams = examData.filter(row =>
+			
+        	 const studentExams = examData.filter(row =>
               row['Seat No.']?.trim().toLowerCase() === seat.trim().toLowerCase() && row['Stream Name']?.trim().toLowerCase() === stream
             );
 			const studentSchedule = examSchedule.filter(r =>{
 				const startSeat = parseInt(r['FROM'].substring(1),10);
 				const endSeat =parseInt(r['TO'].substring(1),10);
-					console.log(startSeat,'Start Date');
-					console.log(endSeat,'End date');
+				console.log(startSeat,'Start Date');
+				console.log(endSeat,'End date');
 				return (r['STREAM']?.trim().toLowerCase() === stream && startSeat >= seatNo && endSeat <= seatNo);
 			});
+
+			console.log(studentSchedule,'Start Date');
             if (studentExams.length === 0 && studentSchedule.lenght === 0 ) {
                 alert('No data found for this seat number and stream.');
                 return;
@@ -121,6 +123,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -86,7 +86,7 @@
 
             const studentName = studentExams[0]['Student Name'];
           
-            document.getElementById('studentInfo').textContent = `Student: ${studentName.toUpperCase()} (Stream: ${stream.toUpperCase()})`;
+            document.getElementById('studentInfo').textContent = `Student: ${studentName.trim().toUpperCase()} (Stream: ${stream.toUpperCase()})`;
 
             const tbody = document.querySelector('#examTable tbody');
             tbody.innerHTML = '';
@@ -110,6 +110,7 @@
     </script>
 </body>
 </html>
+
 
 
 

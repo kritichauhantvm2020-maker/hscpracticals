@@ -66,11 +66,13 @@
             const seat = document.getElementById('seatNumber').value.trim().toLowerCase();
             const stream = document.getElementById('stream').value.trim().toLowerCase();
             console.log(seat);
-        
+        	alert(parseInt(seat));
             const studentExams = examData.filter(row =>
-              row['A']?.trim().toLowerCase() === seat && row['B']?.trim().toLowerCase() === stream
+              row['B']?.trim().toLowerCase() === seat && row['C']?.trim().toLowerCase() === stream
             );
-
+			const studentSchedule = examSchedule.(r =>
+				r['B']?.trim().toLowerCase() === stream 
+			);
             if (studentExams.length === 0) {
                 alert('No data found for this seat number and stream.');
                 return;
@@ -78,7 +80,7 @@
 
             const studentName = studentExams[0]['C'];
             //const batch = studentExams[0]['D'];
-            document.getElementById('studentInfo').textContent = `Student: ${studentName} (Stream: ${stream})`;
+            document.getElementById('studentInfo').textContent = `Student: ${studentName} (Stream: ${stream}.toUpperCase())`;
 
             const tbody = document.querySelector('#examTable tbody');
             tbody.innerHTML = '';
@@ -101,6 +103,7 @@
     </script>
 </body>
 </html>
+
 
 
 

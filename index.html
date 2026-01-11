@@ -65,7 +65,7 @@
           
             const seat = document.getElementById('seatNumber').value;
             const stream = document.getElementById('stream').value.trim().toLowerCase();
-            console.log(seat);
+            console.log(seat.substring(1));
         	alert(parseInt(seat,10));
             const studentExams = examData.filter(row =>
               row['B']?.trim().toLowerCase() === seat.trim().toLowerCase() && row['C']?.trim().toLowerCase() === stream
@@ -103,6 +103,7 @@
     </script>
 </body>
 </html>
+
 
 
 

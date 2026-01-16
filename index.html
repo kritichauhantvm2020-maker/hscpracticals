@@ -75,7 +75,7 @@
 			const studentSchedule = examSchedule.filter(r =>{
 				const startSeat = parseInt(r['FROM'].substring(1),10);
 				const endSeat =parseInt(r['TO'].substring(1),10);
-				return (r['STREAM']?.trim().toLowerCase() === stream && seatNo >= startSeat && seatNo <= seatNo);
+				return (r['STREAM']?.trim().toLowerCase() === stream && seatNo >= startSeat && seatNo <= endSeat);
 			});
 			console.log(studentExams,'Student table');
 			console.log(studentSchedule,'Schedule table');
@@ -123,6 +123,7 @@
     </script>
 </body>
 </html>
+
 
 
 

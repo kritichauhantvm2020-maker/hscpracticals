@@ -107,10 +107,11 @@
             		studentSubjects.push(subName.trim().toLowerCase());
         		}
     		}
+				console.log(studentSubjects,'subject Student');
     		 return studentSubjects.includes(schedule.SUBJECT?.trim().toLowerCase());
 			});
 
-			console.log(studentSubjects,'subject Student');
+			//console.log(studentSubjects,'subject Student');
             const studentName = studentExams[0]['Student Name'];
             console.log(studentName,'sTUDENT NAME');
             document.getElementById('studentInfo').textContent = `Student: ${studentName.trim().toUpperCase()} (Stream: ${stream.toUpperCase()})`;
@@ -151,6 +152,7 @@
     </script>
 </body>
 </html>
+
 
 
 

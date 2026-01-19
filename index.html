@@ -111,14 +111,14 @@
     		 return studentSubjects.includes(schedule.SUBJECT?.trim().toLowerCase());
 			});
 
-			//console.log(studentSubjects,'subject Student');
+			console.log(validSchedule,'subject Student');
             const studentName = studentExams[0]['Student Name'];
             console.log(studentName,'sTUDENT NAME');
             document.getElementById('studentInfo').textContent = `Student: ${studentName.trim().toUpperCase()} (Stream: ${stream.toUpperCase()})`;
 
             const tbody = document.querySelector('#examTable tbody');
             tbody.innerHTML = '';
-            studentSchedule.forEach(exam => {
+            validSchedule.forEach(exam => {
 				 if (exam.DATE && !isNaN(exam.DATE)) {
         			exam.DATE = sheetsSerialToDate(parseFloat(exam.DATE)).toLocaleDateString('en-IN');
     		}
@@ -152,6 +152,7 @@
     </script>
 </body>
 </html>
+
 
 
 

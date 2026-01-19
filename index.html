@@ -118,7 +118,7 @@
 
             const tbody = document.querySelector('#examTable tbody');
             tbody.innerHTML = '';
-            validSchedule.forEach(exam => {
+            studentSchedule.forEach(exam => {
 				 if (exam.DATE && !isNaN(exam.DATE)) {
         			exam.DATE = sheetsSerialToDate(parseFloat(exam.DATE)).toLocaleDateString('en-IN');
     		}
@@ -152,6 +152,7 @@
     </script>
 </body>
 </html>
+
 
 
 

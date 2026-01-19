@@ -84,7 +84,7 @@
                 return;
             }
 
-            const studentName = studentExams[0]['Student Name'];
+            const studentName = studentExams[1]['Student Name'];
             console.log(studentName,'sTUDENT NAME');
             document.getElementById('studentInfo').textContent = `Student: ${studentName.trim().toUpperCase()} (Stream: ${stream.toUpperCase()})`;
 
@@ -94,6 +94,7 @@
 				 if (exam.DATE && !isNaN(exam.DATE)) {
         			exam.DATE = sheetsSerialToDate(parseFloat(exam.DATE)).toLocaleDateString('en-IN');
     		}
+				
                 const row = tbody.insertRow();
                 row.innerHTML = `
 					<td>${exam.BATCH}</td>
@@ -102,7 +103,7 @@
                     <td>${exam.DAY}</td>
                     <td>${exam.TIME}</td>
                     <td>${exam.VENUE}</td>
-                `;
+                `;}
             });
 
             document.getElementById('result').classList.remove('hidden');
@@ -123,6 +124,7 @@
     </script>
 </body>
 </html>
+
 
 
 

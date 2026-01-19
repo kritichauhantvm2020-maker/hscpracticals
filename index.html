@@ -94,6 +94,23 @@
     				}
 			}
 			console.log(exemptedSubjects,'Exempted Student');
+
+			const validSchedule = studentSchedule.filter(schedule => {
+    // Skip if student has exempted subjects entirely
+   			 if (exemptedSubjects.length > 0) {
+        				return false;
+   			 }
+    		const studentSubjects = [];
+    		for (let i = 1; i <= 9; i++) {
+        		const subName = studentExam[`sub${i}name`];
+       			 if (subName && subName !== '' && subName !== 'Exempted') {
+            		studentSubjects.push(subName.trim().toLowerCase());
+        		}
+    		}
+    		 return studentSubjects.includes(schedule.SUBJECT?.trim().toLowerCase());
+			});
+
+			console.log(studentSubjects,'subject Student');
             const studentName = studentExams[0]['Student Name'];
             console.log(studentName,'sTUDENT NAME');
             document.getElementById('studentInfo').textContent = `Student: ${studentName.trim().toUpperCase()} (Stream: ${stream.toUpperCase()})`;
@@ -134,6 +151,7 @@
     </script>
 </body>
 </html>
+
 
 
 

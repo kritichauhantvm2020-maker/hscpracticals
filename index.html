@@ -72,12 +72,14 @@
         	 const studentExams = examData.filter(row =>
               row['Seat No.']?.trim().toLowerCase() === seat.trim().toLowerCase() && row['Stream Name']?.trim().toLowerCase() === stream
             );
-
+			console.log(studentExams.length,'TOTAL DATA');
 			const studentSchedule = examSchedule.filter(r =>{
 				const startSeat = parseInt(r['FROM'].substring(1),10);
 				const endSeat =parseInt(r['TO'].substring(1),10);
 				return (r['STREAM']?.trim().toLowerCase() === stream && seatNo >= startSeat && seatNo <= endSeat);
 			});
+
+			console.log(studentSchedule.length,'TOTAL time');
 			console.log(studentExams,'Student table');
 			console.log(studentSchedule,'Schedule table');
             if (studentExams.length === 0 && studentSchedule.lenght === 0 ) {
@@ -143,6 +145,7 @@
     </script>
 </body>
 </html>
+
 
 
 

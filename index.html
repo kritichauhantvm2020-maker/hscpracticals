@@ -94,6 +94,11 @@
                 }
             }
             console.log('Valid student subjects:', validStudentSubjects);
+			const validSchedule = studentSchedule.filter(schedule => 
+                validStudentSubjects.includes(schedule['SUBJECT']?.trim())
+            );
+            
+             console.log('Final valid schedule:', validSchedule.length);
 			const studentName = studentExams[0]['Student Name'];
             console.log(studentName,'sTUDENT NAME');
             document.getElementById('studentInfo').textContent = `Student: ${studentName.trim().toUpperCase()} (Stream: ${stream.toUpperCase()})`;
@@ -134,6 +139,7 @@
     </script>
 </body>
 </html>
+
 
 
 

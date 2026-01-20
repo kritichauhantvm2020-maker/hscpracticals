@@ -43,7 +43,16 @@
             <tbody></tbody>
         </table>
     </div>
-
+	<div style="text-align: center; margin-top: 25px;">
+        <button onclick="window.print()" 
+                style="background: #28a745; color: white; border: none; padding: 12px 30px; 
+                       font-size: 16px; border-radius: 25px; cursor: pointer; 
+                       box-shadow: 0 4px 8px rgba(40,167,69,0.3);">
+            🖨️ Print Schedule
+        </button>
+        <p style="margin-top: 10px; font-size: 14px; color: #666;">
+            Click to print this student's exam schedule
+        </p>
     <script>
         let examData = []; // Global data cache
 		let examSchedule = [];
@@ -154,6 +163,7 @@
     </script>
 </body>
 </html>
+
 
 
 

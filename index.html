@@ -86,6 +86,14 @@
             }
 			const studentExam = studentExams[0]
 			console.log(studentExam,'STUDENT FOUND');
+			const validStudentSubjects = [];
+            for (let i = 1; i <= 9; i++) {
+                const subName = studentExam[`sub${i}name`];
+                if (subName && subName.trim() !== '' && subName.trim().toUpperCase() !== 'EXEMPTED') {
+                    validStudentSubjects.push(subName.trim());
+                }
+            }
+            console.log('Valid student subjects:', validStudentSubjects);
 			const studentName = studentExams[0]['Student Name'];
             console.log(studentName,'sTUDENT NAME');
             document.getElementById('studentInfo').textContent = `Student: ${studentName.trim().toUpperCase()} (Stream: ${stream.toUpperCase()})`;
@@ -126,6 +134,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -105,22 +105,26 @@
 
             const tbody = document.querySelector('#examTable tbody');
             tbody.innerHTML = '';
-            studentSchedule.forEach(exam => {
+
+			if(validSchedule.lenght ===0){
+				 tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#666;">No exams scheduled for this student\'s valid subjects.</td></tr>';
+			}else{
+            validSchedule.forEach(exam => {
 				 if (exam.DATE && !isNaN(exam.DATE)) {
         			exam.DATE = sheetsSerialToDate(parseFloat(exam.DATE)).toLocaleDateString('en-IN');
-    		}
+    			}
 				
                 const row = tbody.insertRow();
                 row.innerHTML = `
-					<td>${exam.BATCH}</td>
-                    <td>${exam.SUBJECT}</td>
-                    <td>${exam.DATE}</td>
-                    <td>${exam.DAY}</td>
-                    <td>${exam.TIME}</td>
-                    <td>${exam.VENUE}</td>
+						<td>${exam.BATCH || studentExam['Stream Name'] || ''}</td>
+                        <td>${exam.SUBJECT || ''}</td>
+                        <td>${exam.DATE || 'TBA'}</td>
+                        <td>${exam.DAY || 'TBA'}</td>
+                        <td>${exam.TIME || 'TBA'}</td>
+                        <td>${exam.VENUE || 'TBA'}</td>
                 `;
             });
-
+			}
             document.getElementById('result').classList.remove('hidden');
         });
 
@@ -139,6 +143,7 @@
     </script>
 </body>
 </html>
+
 
 
 

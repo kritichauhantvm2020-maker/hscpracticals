@@ -73,7 +73,6 @@
               row['Seat No.']?.trim().toLowerCase() === seat.trim().toLowerCase() && row['Stream Name']?.trim().toLowerCase() === stream
             );
 
-			const studentExam = studentExams[0];
 			const studentSchedule = examSchedule.filter(r =>{
 				const startSeat = parseInt(r['FROM'].substring(1),10);
 				const endSeat =parseInt(r['TO'].substring(1),10);
@@ -127,6 +126,7 @@
     </script>
 </body>
 </html>
+
 
 
 

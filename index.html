@@ -85,7 +85,8 @@
                 alert('No data found for this seat number and stream.');
                 return;
             }
-
+			const studentExam = studentExams[0]
+			onsole.log(studentExam,'STUDENT FOUND');
 			const studentName = studentExams[0]['Student Name'];
             console.log(studentName,'sTUDENT NAME');
             document.getElementById('studentInfo').textContent = `Student: ${studentName.trim().toUpperCase()} (Stream: ${stream.toUpperCase()})`;
@@ -126,6 +127,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -82,8 +82,10 @@
 			console.log(studentSchedule.length,'TOTAL time');
 			console.log(studentExams,'Student table');
 			console.log(studentSchedule,'Schedule table');
-            if (studentExams.length === 0 && studentSchedule.lenght === 0 ) {
-                alert('No data found for this seat number and stream.');
+
+			
+            if (studentExams.length === 0) {
+                alert('No student found for this seat number and stream.');
                 return;
             }
 			const studentExam = studentExams[0]
@@ -145,6 +147,7 @@
     </script>
 </body>
 </html>
+
 
 
 

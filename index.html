@@ -12,6 +12,15 @@
         th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         th { background-color: #f2f2f2; }
         .hidden { display: none; }
+	@media print {
+    body * { visibility: hidden; }
+    #result, #result * { visibility: visible; }
+    #result { position: absolute; left: 0; top: 0; width: 100%; }
+    #searchForm, .print-button-area { display: none !important; }
+    table { font-size: 12px; width: 100%; }
+    th, td { border: 2px solid #000; padding: 8px; }
+    h2#studentInfo { font-size: 18px; margin-bottom: 20px; page-break-inside: avoid; }
+}
     </style>
 </head>
 <body>
@@ -163,6 +172,7 @@
     </script>
 </body>
 </html>
+
 
 
 
